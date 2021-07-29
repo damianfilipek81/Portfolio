@@ -1,14 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import Entrypage from "../Entrypage/Entrypage";
+import {Map} from '../../Game/Map/Map';
 
 const Root = styled.div`
-  background: black;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 const Homepage = () => (
   <Root>
-    <Entrypage />
+    <Map />
   </Root>
 );
 
