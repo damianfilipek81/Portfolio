@@ -1,15 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import MapImage from "../../../images/map.png";
+import { Controlls } from "../Controlls/Controlls";
 
 const Image = styled.div`
   width: 1280px;
   height: 672px;
   background-image: url(${MapImage});
   background-repeat: no-repeat;
+  position: relative;
+  background-size: cover;
 `;
 
-const ImageWrapper = styled.span`
+const Field = styled.span`
   width: 32px;
   height: 32px;
   display: inline-block;
@@ -22,6 +25,8 @@ const Row = styled.div`
 `;
 
 export const Map = () => {
+  const [controller, setController] = useState('');
+
   const rows = [];
   const wrappers = [];
   for (let i = 0; i < 40; i++) {
@@ -32,10 +37,15 @@ export const Map = () => {
     rows.push(
       <Row id={`Row ${i}`}>
         {wrappers.map((data) => (
-          <ImageWrapper key={data} id={`Wrapper ${data}`} />
+          <Field key={data} id={`Wrapper ${data}`}  />
         ))}
       </Row>
     );
   }
-  return <Image>{rows.map((data) => data)}</Image>;
+  return (
+    <Image onKeyDown={(e) => setController(e)} tabIndex="0">
+      {rows.map((data) => data)}
+      <Controlls event={controller}/>
+    </Image>
+  );
 };

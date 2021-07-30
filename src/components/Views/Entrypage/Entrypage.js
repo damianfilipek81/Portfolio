@@ -88,6 +88,7 @@ const Entrypage = () => {
   const [startButtonAnimation, setStartButtonAnimation] = useState(false);
   setTimeout(() => setStartBorderAnimation(true), 1000);
   setTimeout(() => setStartButtonAnimation(true), 2000);
+
   return (
     <Root>
       <BorderTop animation={startBorderAnimation} />
