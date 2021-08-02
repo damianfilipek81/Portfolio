@@ -12,6 +12,9 @@ export const Controlls = ({ event }) => {
   });
 
   const forbiddenFieldsDown = [
+    { left: 512, top: 416 },
+    { left: 544, top: 416 },
+    { left: 576, top: 416 },
     { left: 640, top: 416 },
     { left: 672, top: 416 },
     { left: 704, top: 416 },
@@ -43,32 +46,20 @@ export const Controlls = ({ event }) => {
         step: positions.step < 2 ? positions.step + 1 : 0,
       });
     } else if (e.key === "ArrowDown") {
-      for (let data of forbiddenFieldsDown) {
-        if (data.left === positions.left && data.top === positions.top) {
-          console.log(data);
-          setPositions({
-            top: positions.top,
-            left: positions.left,
-            posX: positions.step * -32,
-            posY: 0,
-            step: positions.step < 2 ? positions.step + 1 : 0,
-          });
-        } else {
-          setPositions({
-            top: positions.top === 640 ? positions.top : positions.top + 32,
-            left: positions.left,
-            posX: positions.step * -32,
-            posY: 0,
-            step: positions.step < 2 ? positions.step + 1 : 0,
-          });
-        }
-      }
+      setPositions({
+        top: positions.top === 640 || forbiddenFieldsDown.filter(field => field.top === positions.top && field.left === positions.left).length > 0 ? positions.top : positions.top + 32,
+        left: positions.left,
+        posX: positions.step * -32,
+        posY: 0,
+        step: positions.step < 2 ? positions.step + 1 : 0,
+      });
     }
-    console.log("Left", positions.left, "top", positions.top);
+    console.log(positions);
   };
-
+  
+  
   useEffect(() => {
-    handler(event);
+   handler(event);
   }, [event]);
   return (
     <Sprite
