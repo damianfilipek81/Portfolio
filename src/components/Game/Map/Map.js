@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import styled from "styled-components";
 import MapImage from "../../../images/map.png";
 import { Controlls } from "../Controlls/Controlls";
@@ -10,41 +10,22 @@ const Image = styled.div`
   background-repeat: no-repeat;
   position: relative;
   background-size: cover;
-`;
 
-const Field = styled.span`
-  width: 32px;
-  height: 32px;
-  display: inline-block;
-  margin: 0;
-  top: 0;
-`;
-
-const Row = styled.div`
-  height: 32px;
+  &:focus-visible{
+    outline: none;
+  }
 `;
 
 export const Map = () => {
   const [controller, setController] = useState('');
+  const myRef = useRef(null);
 
-  const rows = [];
-  const wrappers = [];
-  for (let i = 0; i < 40; i++) {
-    wrappers.push(i);
-  }
+  useEffect(() => {
+    myRef.current.focus()
+  }, [])
 
-  for (let i = 0; i < 21; i++) {
-    rows.push(
-      <Row id={`Row ${i}`}>
-        {wrappers.map((data) => (
-          <Field key={data} id={`Wrapper ${data}`}  />
-        ))}
-      </Row>
-    );
-  }
   return (
-    <Image onKeyDown={(e) => setController(e)} tabIndex="0">
-      {rows.map((data) => data)}
+    <Image onKeyDown={(e) => setController(e)} tabIndex="0" ref={myRef}>
       <Controlls event={controller}/>
     </Image>
   );
