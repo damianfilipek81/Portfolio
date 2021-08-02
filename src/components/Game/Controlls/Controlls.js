@@ -114,7 +114,6 @@ export const Controlls = ({ event }) => {
     { left: 672, top: 480 },
     { left: 736, top: 576 },
     { left: 768, top: 608 },
-
   ];
 
   const forbiddenFieldsRight = [
@@ -141,14 +140,20 @@ export const Controlls = ({ event }) => {
     { left: 672, top: 576 },
     { left: 672, top: 608 },
     { left: 736, top: 576 },
-
   ];
 
   const handler = (e) => {
     if (e.key === "ArrowRight") {
       setPositions({
         top: positions.top,
-        left: positions.left === 1248 || forbiddenFieldsRight.filter(field => field.top === positions.top && field.left === positions.left).length > 0 ? positions.left : positions.left + 32,
+        left:
+          positions.left === 1248 ||
+          forbiddenFieldsRight.filter(
+            (field) =>
+              field.top === positions.top && field.left === positions.left
+          ).length > 0
+            ? positions.left
+            : positions.left + 32,
         posX: positions.step * -32,
         posY: -64,
         step: positions.step < 2 ? positions.step + 1 : 0,
@@ -156,14 +161,28 @@ export const Controlls = ({ event }) => {
     } else if (e.key === "ArrowLeft") {
       setPositions({
         top: positions.top,
-        left: positions.left === 0 || forbiddenFieldsLeft.filter(field => field.top === positions.top && field.left === positions.left).length > 0 ? positions.left : positions.left - 32,
+        left:
+          positions.left === 0 ||
+          forbiddenFieldsLeft.filter(
+            (field) =>
+              field.top === positions.top && field.left === positions.left
+          ).length > 0
+            ? positions.left
+            : positions.left - 32,
         posX: positions.step * -32,
         posY: -32,
         step: positions.step < 2 ? positions.step + 1 : 0,
       });
     } else if (e.key === "ArrowUp") {
       setPositions({
-        top: positions.top === 0 || forbiddenFieldsTop.filter(field => field.top === positions.top && field.left === positions.left).length > 0 ? positions.top : positions.top - 32,
+        top:
+          positions.top === 0 ||
+          forbiddenFieldsTop.filter(
+            (field) =>
+              field.top === positions.top && field.left === positions.left
+          ).length > 0
+            ? positions.top
+            : positions.top - 32,
         left: positions.left,
         posX: positions.step * -32,
         posY: -96,
@@ -171,7 +190,14 @@ export const Controlls = ({ event }) => {
       });
     } else if (e.key === "ArrowDown") {
       setPositions({
-        top: positions.top === 640 || forbiddenFieldsDown.filter(field => field.top === positions.top && field.left === positions.left).length > 0 ? positions.top : positions.top + 32,
+        top:
+          positions.top === 640 ||
+          forbiddenFieldsDown.filter(
+            (field) =>
+              field.top === positions.top && field.left === positions.left
+          ).length > 0
+            ? positions.top
+            : positions.top + 32,
         left: positions.left,
         posX: positions.step * -32,
         posY: 0,
@@ -180,10 +206,9 @@ export const Controlls = ({ event }) => {
     }
     console.log(positions);
   };
-  
-  
+
   useEffect(() => {
-   handler(event);
+    handler(event);
   }, [event]);
   return (
     <Sprite
