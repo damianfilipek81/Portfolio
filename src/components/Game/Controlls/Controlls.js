@@ -91,6 +91,32 @@ export const Controlls = ({ event }) => {
     { left: 768, top: 512 },
     { left: 768, top: 544 },
     { left: 800, top: 576 },
+    { left: 544, top: 192 },
+    { left: 544, top: 160 },
+    { left: 768, top: 32 },
+    { left: 768, top: 64 },
+    { left: 736, top: 160 },
+    { left: 736, top: 192 },
+    { left: 1120, top: 224 },
+    { left: 1216, top: 192 },
+    { left: 832, top: 448 },
+    { left: 928, top: 384 },
+    { left: 928, top: 416 },
+    { left: 928, top: 448 },
+    { left: 928, top: 480 },
+    { left: 928, top: 512 },
+    { left: 928, top: 544 },
+    { left: 1024, top: 416 },
+    { left: 1024, top: 384 },
+    { left: 1120, top: 416 },
+    { left: 1024, top: 608 },
+    { left: 1088, top: 576 },
+    { left: 1088, top: 544 },
+    { left: 1120, top: 512 },
+    { left: 1120, top: 480 },
+    { left: 1248, top: 448 },
+    { left: 1248, top: 416 },
+    { left: 1216, top: 576 },
   ];
 
   const forbiddenFieldsTop = [
@@ -114,6 +140,32 @@ export const Controlls = ({ event }) => {
     { left: 672, top: 480 },
     { left: 736, top: 576 },
     { left: 768, top: 608 },
+    { left: 512, top: 224 },
+    { left: 736, top: 96 },
+    { left: 704, top: 224 },
+    { left: 832, top: 128 },
+    { left: 864, top: 128 },
+    { left: 896, top: 160 },
+    { left: 928, top: 160 },
+    { left: 960, top: 192 },
+    { left: 992, top: 192 },
+    { left: 1024, top: 192 },
+    { left: 1056, top: 192 },
+    { left: 1088, top: 256 },
+    { left: 1120, top: 224 },
+    { left: 1152, top: 224 },
+    { left: 1184, top: 224 },
+    { left: 1216, top: 192 },
+    { left: 1248, top: 192 },
+    { left: 800, top: 480 },
+    { left: 896, top: 576 },
+    { left: 992, top: 448 },
+    { left: 1088, top: 448 },
+    { left: 992, top: 640 },
+    { left: 1056, top: 608 },
+    { left: 1088, top: 544 },
+    { left: 1216, top: 480 },
+    { left: 1184, top: 608 },
   ];
 
   const forbiddenFieldsRight = [
@@ -140,10 +192,42 @@ export const Controlls = ({ event }) => {
     { left: 672, top: 576 },
     { left: 672, top: 608 },
     { left: 736, top: 576 },
+    { left: 480, top: 160 },
+    { left: 480, top: 192 },
+    { left: 704, top: 32 },
+    { left: 704, top: 64 },
+    { left: 672, top: 160 },
+    { left: 672, top: 192 },
+    { left: 832, top: 0 },
+    { left: 832, top: 32 },
+    { left: 832, top: 64 },
+    { left: 800, top: 96 },
+    { left: 864, top: 128 },
+    { left: 928, top: 160 },
+    { left: 1056, top: 192 },
+    { left: 1056, top: 224 },
+    { left: 768, top: 448 },
+    { left: 864, top: 384 },
+    { left: 864, top: 416 },
+    { left: 864, top: 448 },
+    { left: 864, top: 480 },
+    { left: 864, top: 512 },
+    { left: 864, top: 544 },
+    { left: 960, top: 384 },
+    { left: 960, top: 416 },
+    { left: 1056, top: 416 },
+    { left: 1056, top: 480 },
+    { left: 1056, top: 512 },
+    { left: 1024, top: 544 },
+    { left: 1024, top: 576 },
+    { left: 960, top: 608 },
+    { left: 1184, top: 416 },
+    { left: 1184, top: 448 },
+    { left: 1152, top: 576 },
   ];
 
   const handler = (e) => {
-    if (e.key === "ArrowRight") {
+    if (e.key === "ArrowRight" || e.key === "d") {
       setPositions({
         top: positions.top,
         left:
@@ -158,7 +242,7 @@ export const Controlls = ({ event }) => {
         posY: -64,
         step: positions.step < 2 ? positions.step + 1 : 0,
       });
-    } else if (e.key === "ArrowLeft") {
+    } else if (e.key === "ArrowLeft" || e.key === "a") {
       setPositions({
         top: positions.top,
         left:
@@ -173,7 +257,7 @@ export const Controlls = ({ event }) => {
         posY: -32,
         step: positions.step < 2 ? positions.step + 1 : 0,
       });
-    } else if (e.key === "ArrowUp") {
+    } else if (e.key === "ArrowUp" || e.key === "w") {
       setPositions({
         top:
           positions.top === 0 ||
@@ -188,7 +272,7 @@ export const Controlls = ({ event }) => {
         posY: -96,
         step: positions.step < 2 ? positions.step + 1 : 0,
       });
-    } else if (e.key === "ArrowDown") {
+    } else if (e.key === "ArrowDown" || e.key === "s") {
       setPositions({
         top:
           positions.top === 640 ||
