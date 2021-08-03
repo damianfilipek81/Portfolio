@@ -1,79 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
-const borderSettings = `
-  border-color: #fff;;
-  position: absolute;
-  display: inline-block;
-  transition: all 1s;
-`;
-const BorderTop = styled.span`
-  left: 50px;
-  top: 50px;
-  border-top: 5px solid;
-  width: 0;
-  ${borderSettings}
-  ${({ animation }) =>
-    animation &&
-    `
-	width: calc(100% - 100px)
-	`}
-`;
-
-const BorderRight = styled.span`
-  right: 50px;
-  bottom: 50px;
-  border-right: 5px solid;
-  height: 0;
-  ${borderSettings}
-  ${({ animation }) =>
-    animation &&
-    `
-	height: calc(100% - 100px)
-	`}
-`;
-
-const BorderBottom = styled.span`
-  bottom: 50px;
-  right: 50px;
-  border-bottom: 5px solid;
-  width: 0;
-  ${borderSettings}
-  ${({ animation }) =>
-    animation &&
-    `
-	width: calc(100% - 100px)
-	`}
-`;
-
-const BorderLeft = styled.span`
-  left: 50px;
-  top: 50px;
-  border-left: 5px solid;
-  height: 0;
-  ${borderSettings}
-  ${({ animation }) =>
-    animation &&
-    `
-	height: calc(100% - 100px)
-	`}
-`;
-
-const Button = styled(Link)`
-
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  color: #fff;
-  font-size: 40px;
-  transition: all 1s;
-  opacity: 0;
-  ${({animation}) => animation &&`
-  opacity: 1;
-  `}
-`;
+import { keyframes } from "styled-components";
 
 const Root = styled.div`
   height: 100%;
@@ -81,21 +9,76 @@ const Root = styled.div`
   left: 0;
   top: 0;
   position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `;
 
+const typing = keyframes`
+from {
+  width: 0
+}
+`;
+
+const blink = keyframes`
+50% {
+  border-color: transparent
+}
+`;
+
+const Text = styled.div`
+  width: ${({ width }) => width}ch;
+  ${({ display }) =>
+    display
+      ? `
+    display: block;
+  `
+      : `
+  display: none;`}
+  animation: ${typing} 2s steps(22), ${blink} 0.5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  ${({blinkTimeout}) => blinkTimeout ? `border-right: none;` : `border-right: 3px solid;`}
+  font-size: 50px;
+  color: #39ff14;
+  user-select: none;
+`;
+
+const TextButton = styled(Link)`
+  width: 7ch;
+  ${({ display }) =>
+    display
+      ? `
+    display: block;
+  `
+      : `
+  display: none;`}
+  animation: ${typing} 1s steps(12), ${blink} 0.5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  ${({blinkTimeout}) => blinkTimeout ? `border-right: none;` : `border-right: 3px solid;`}
+  font-size: 50px;
+  color: #39ff14;
+  margin-top: 30px;
+
+  &:hover{
+    color: #EBE759;
+  }
+`;
 const Entrypage = () => {
-  const [startBorderAnimation, setStartBorderAnimation] = useState(false);
-  const [startButtonAnimation, setStartButtonAnimation] = useState(false);
-  setTimeout(() => setStartBorderAnimation(true), 1000);
-  setTimeout(() => setStartButtonAnimation(true), 2000);
+  const [oneSecTimeout, setOneSecTimeout] = useState(false);
+  setTimeout(() => setOneSecTimeout(true), 1000);
+  const [sixSecTimeout, setSixSecTimeout] = useState(false);
+  setTimeout(() => setSixSecTimeout(true), 6000);
+  const [twelveSecTimeout, setTwelveSecTimeout] = useState(false);
+  setTimeout(() => setTwelveSecTimeout(true), 12000);
 
   return (
     <Root>
-      <BorderTop animation={startBorderAnimation} />
-      <BorderLeft animation={startBorderAnimation} />
-      <BorderRight animation={startBorderAnimation} />
-      <BorderBottom animation={startBorderAnimation} />
-      <Button to="/home" animation={startButtonAnimation}>Enter</Button>
+      <Text width={16} display={oneSecTimeout} blinkTimeout={sixSecTimeout}>{`> `}Damian Filipek</Text>
+      <Text width={22} display={sixSecTimeout} blinkTimeout={twelveSecTimeout}>{`> `}junior web developer</Text>
+      <TextButton display={twelveSecTimeout} blinkTimeout={false} to='/home'>{`> `}Enter</TextButton>
     </Root>
   );
 };
