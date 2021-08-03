@@ -16,9 +16,9 @@ const Image = styled.div`
   top: ${({top}) => `${top}`};
   left: ${({left}) => `${left}`};
 `
-export const Sprite = ({top, left, posX, posY, character}) => {
+export const Sprite = ({top, left, posX, posY, character, spriteRef}) => {
   return(
-    <Image top={top} left={left} posX={posX} posY={posY} character={character}/>
+    <Image top={top} left={left} posX={posX} posY={posY} character={character} ref={spriteRef}/>
   )
 }
 
@@ -28,4 +28,5 @@ Sprite.propTypes = {
   posX: PropTypes.string,
   posY: PropTypes.string,
   character: PropTypes.string,
+  spriteRef: PropTypes.any,
 }

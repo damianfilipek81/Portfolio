@@ -16,6 +16,7 @@ margin: 10px;
 flex-direction: column;
 padding: 50px;
 border-radius: 5px;
+z-index: 999;
 `
 
 const Span = styled.span`

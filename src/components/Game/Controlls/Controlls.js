@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Sprite } from "../Sprite/Sprite";
 import PropTypes from "prop-types";
 import { Modal } from "../Modal/Modal";
@@ -271,7 +271,8 @@ export const Controlls = ({ event, character }) => {
     step: 0,
   });
   const [nextSite, setNextSite] = useState(null);
-
+  const spriteRef = useRef(null);
+  
   const handler = (e) => {
     if (e.key === "ArrowRight" || e.key === "d") {
       setPositions({
@@ -361,6 +362,7 @@ export const Controlls = ({ event, character }) => {
     } else {
       setNextSite(null);
     }
+    spriteRef.current.scrollIntoView({"inline":"center", "block": "center"});
   };
 
   useEffect(() => {
@@ -374,6 +376,7 @@ export const Controlls = ({ event, character }) => {
         posX={`${positions.posX}px`}
         posY={`${positions.posY}px`}
         character={character}
+        spriteRef={spriteRef}
       />
       {nextSite !== null && <Modal nextSite={nextSite} event={event}/>}
     </React.Fragment>

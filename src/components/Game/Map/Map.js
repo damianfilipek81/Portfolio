@@ -5,26 +5,51 @@ import { Controlls } from "../Controlls/Controlls";
 import maleCharacter from "../../../images/boy.png";
 import femaleCharacter from "../../../images/girl.png";
 
-const Image = styled.div`
+// const Image = styled.div`
+//   width: 1280px;
+//   height: 672px;
+//   background-image: url(${MapImage});
+//   background-repeat: no-repeat;
+//   position: relative;
+//   background-size: cover;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+
+//   &:focus-visible {
+//     outline: none;
+//   }
+// `;
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   width: 1280px;
   height: 672px;
-  background-image: url(${MapImage});
-  background-repeat: no-repeat;
-  position: relative;
-  background-size: cover;
+  overflow: auto;
 
   &:focus-visible {
     outline: none;
   }
-  display: flex;
-  align-items: center;
-  justify-content: center;
+`;
+const Image = styled.img`
+  position: absolute;
+  width: 1280px;
+  height: 672px;
+  top: 0;
+  left: 0;
+  object-fit: cover;
 `;
 const CharacterPickerWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 111111;
+  z-index: 999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 const CharacterPicker = styled.div`
   display: flex;
@@ -66,7 +91,8 @@ export const Map = () => {
     myRef.current.focus();
   }, []);
   return (
-    <Image onKeyDown={(e) => setController(e)} tabIndex="0" ref={myRef}>
+    <Wrapper onKeyDown={(e) => setController(e)} tabIndex="0" ref={myRef}>
+      <Image src={MapImage} />
       <CharacterPickerWrapper>
         <CharacterPicker
           onClick={() => setCharacter("male")}
@@ -83,7 +109,7 @@ export const Map = () => {
           Female
         </CharacterPicker>
       </CharacterPickerWrapper>
-      <Controlls event={controller} character={character}/>
-    </Image>
+      <Controlls event={controller} character={character} />
+    </Wrapper>
   );
 };
