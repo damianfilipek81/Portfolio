@@ -43,6 +43,7 @@ const Text = styled.div`
   font-size: 50px;
   color: #39ff14;
   user-select: none;
+  font-family: 'matrixFont', sans-serif;
 `;
 
 const TextButton = styled(Link)`
@@ -61,6 +62,7 @@ const TextButton = styled(Link)`
   font-size: 50px;
   color: #39ff14;
   margin-top: 30px;
+  font-family: 'matrixFont', sans-serif;
 
   &:hover{
     color: #EBE759;

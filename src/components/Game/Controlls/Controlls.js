@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Sprite } from "../Sprite/Sprite";
 import PropTypes from "prop-types";
 
-export const Controlls = ({ event }) => {
+export const Controlls = ({ event, character }) => {
   const [positions, setPositions] = useState({
     top: 448,
     left: 608,
@@ -288,7 +288,6 @@ export const Controlls = ({ event }) => {
         step: positions.step < 2 ? positions.step + 1 : 0,
       });
     }
-    console.log(positions);
   };
 
   useEffect(() => {
@@ -300,10 +299,12 @@ export const Controlls = ({ event }) => {
       left={`${positions.left}px`}
       posX={`${positions.posX}px`}
       posY={`${positions.posY}px`}
+      character={character}
     />
   );
 };
 
 Controlls.propTypes = {
   event: PropTypes.object,
+  character: PropTypes.string,
 };

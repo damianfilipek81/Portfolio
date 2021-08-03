@@ -6,8 +6,9 @@ import { createGlobalStyle } from "styled-components";
 import Entrypage from "./components/Views/Entrypage/Entrypage";
 
 const GlobalStyles = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
   body {
-    font-family: 'matrixFont', sans-serif;
+    font-family: 'Raleway', sans-serif;
         }
 `;
 
