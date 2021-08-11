@@ -53,8 +53,6 @@ const Wrapper = styled.div`
   display: flex;
   height: 75%;
   width: 100%;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 15px;
 `;
 
 const Col = styled.div`
@@ -63,10 +61,16 @@ const Col = styled.div`
   cursor: pointer;
   height: 100%;
   overflow: auto;
+  border-radius: 15px;
+  margin: 0px 3px;
+  transition: all 0.1s;
   ${({ selected }) =>
     selected === false
-      ? `filter: blur(2px);`
-      : `background: rgba(222, 222, 222, 0.3);`}
+      ? `filter: blur(2px);
+      background: rgba(255, 255, 255, 0.5);
+      `
+      : `background: rgba(222, 222, 222, 0.3);
+      `}
   &:hover {
     background: rgba(222, 222, 222, 0.3);
   }
@@ -180,7 +184,10 @@ const MySkills = () => {
                 <Icon src={chaiImage} />
                 Chai
               </IconWrapper>
-              <IconWrapper><Icon src={enzymeImage}/>Enzyme</IconWrapper>
+              <IconWrapper>
+                <Icon src={enzymeImage} />
+                Enzyme
+              </IconWrapper>
             </Col>
             <Col
               onClick={() => setIsSelected("others")}

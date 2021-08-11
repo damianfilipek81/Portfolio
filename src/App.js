@@ -6,6 +6,7 @@ import { createGlobalStyle } from "styled-components";
 import Entrypage from "./components/Views/Entrypage/Entrypage";
 import AboutMe from "./components/Views/AboutMe/AboutMe";
 import MySkills from "./components/Views/MySkills/MySkills";
+import MyProjects from "./components/Views/MyProjects/MyProjects";
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -23,6 +24,7 @@ const App = () => {
           <Route exact path="/home" component={Homepage} />
           <Route exact path="/about" component={AboutMe} />
           <Route exact path="/skills" component={MySkills} />
+          <Route exact path="/projects" component={MyProjects} />
         </Switch>
       </MainLayout>
     </BrowserRouter>
