@@ -4,9 +4,9 @@ import MainLayout from "./components/layout/MainLayout/MainLayout";
 import Homepage from "./components/Views/Homepage/Homepage";
 import { createGlobalStyle } from "styled-components";
 import Entrypage from "./components/Views/Entrypage/Entrypage";
+import AboutMe from "./components/Views/AboutMe/AboutMe";
 
 const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
   body {
     font-family: 'Raleway', sans-serif;
         }
@@ -20,6 +20,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Entrypage} />
           <Route exact path="/home" component={Homepage} />
+          <Route exact path="/about" component={AboutMe} />
         </Switch>
       </MainLayout>
     </BrowserRouter>
