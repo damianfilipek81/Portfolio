@@ -365,9 +365,9 @@ export const Controlls = ({ event, character }) => {
     spriteRef.current.scrollIntoView({"inline":"center", "block": "center"});
   };
 
-  useEffect(() => {
-    handler(event);
-  }, [event]);
+  // useEffect(() => {
+  //   handler(event);
+  // }, [event]);
   return (
     <React.Fragment>
       <Sprite
