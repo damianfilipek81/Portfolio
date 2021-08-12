@@ -46,7 +46,7 @@ const AboutMe = () => {
   return (
     <Root>
       <Container maxWidth="lg">
-        <BackButton name={"/home"} color='#393939' colorHover='#030303'/>
+        <BackButton name={"/home"} color="#393939" colorHover="#030303" />
         <Wrapper>
           <Image src={MyImage} />
         </Wrapper>
@@ -67,6 +67,10 @@ const AboutMe = () => {
             I feel very confident in frontend technologies like Javascript and
             React, but I can also do a fullstack apps with the usage of Node.js,
             Express.js and MongoDB.
+          </Text>
+          <Text>
+            Currently I'm looking for a job as a Junior Frontend Developer, feel
+            free to contact me if you have any questions.
           </Text>
           <Text>
             Apart from programming in my spare time i relly enjoy playing chess,
