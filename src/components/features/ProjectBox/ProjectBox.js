@@ -25,7 +25,7 @@ const TitleWrapper = styled.div`
 `;
 const Root = styled.a`
   position: relative;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.5);
   width: 100%;
   height: 100px;
   border-radius: 15px;

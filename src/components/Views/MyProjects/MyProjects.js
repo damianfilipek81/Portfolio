@@ -88,6 +88,14 @@ const MyProjects = () => {
       description:
         "Project of an administration panel for handling orders in a pizzeria with the use of React, React Redux, React Router, Redux Thunk, SCSS",
     },
+    {
+      name: "Epoxy Table",
+      link: "https://epoxytable.pl/",
+      github:
+        "https://github.com/damianfilipek81/EpoxyTable",
+      description:
+        "My first commercial SPA project made for EpoxyTable company. Stack: SCSS, React, React Redux",
+    },
   ];
   const rightRow = [
     {
