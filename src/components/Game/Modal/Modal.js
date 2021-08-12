@@ -41,9 +41,9 @@ export const Modal = ({nextSite, event}) => {
       history.push(`/${nextSite === 'about me' ? 'about' : nextSite === 'my skills' ? 'skills' : nextSite === 'my projects' ? 'projects' : nextSite === 'contact' && 'contact'}`);
     }
   }
-  // useEffect(() => {
-  //   handler(event)
-  // },[event])
+  useEffect(() => {
+    handler(event)
+  },[event])
   return(
     <Root>
       <h5>Hit <Span>spacebar</Span> if you want to go to <Span>{nextSite}</Span> site.</h5>
