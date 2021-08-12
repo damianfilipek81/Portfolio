@@ -10,9 +10,7 @@ const Root = styled.div`
   background-size: cover;
   background-attachment: fixed;
   background-position: top center;
-
   position: relative;
-  background-color: red;
 `;
 
 const Title = styled.h1`
