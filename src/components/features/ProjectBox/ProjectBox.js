@@ -25,17 +25,17 @@ const TitleWrapper = styled.div`
 `;
 const Root = styled.a`
   position: relative;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.4);
   width: 100%;
   height: 100px;
   border-radius: 15px;
   display: flex;
   margin: 10px;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   cursor: pointer;
 
   &:hover{
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(0, 0, 0, 0.7);
   }
 `;
 
