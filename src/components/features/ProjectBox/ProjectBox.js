@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import GitHubIcon from "@material-ui/icons/GitHub";
+import { device } from "../../../deviceSettings";
 
 const Wrapper = styled.div`
   display: flex;
@@ -10,6 +11,17 @@ const Wrapper = styled.div`
   justify-content: center;
   padding: 5px;
   padding-right: 15px;
+
+  @media ${device.laptop}{
+    font-size: 15px;
+  }
+  @media ${device.tablet}{
+    font-size: 13px;
+  }
+  @media ${device.mobileM}{
+    width: 70%;
+    font-size: 12px;
+  }
 `;
 const TitleWrapper = styled.div`
   width: 40%;
@@ -21,6 +33,17 @@ const TitleWrapper = styled.div`
   h2 {
     font-size: 23px;
     text-align: center;
+  }
+
+  @media ${device.tablet}{
+    h2 {
+      font-size: 17px;
+    }
+  }
+  @media ${device.mobileM}{
+    h2{
+      font-size: 15px;
+    }
   }
 `;
 const Root = styled.a`
@@ -36,6 +59,10 @@ const Root = styled.a`
 
   &:hover{
     background: rgba(0, 0, 0, 0.7);
+  }
+
+  @media ${device.mobileL}{
+    margin: 6px 0;
   }
 `;
 

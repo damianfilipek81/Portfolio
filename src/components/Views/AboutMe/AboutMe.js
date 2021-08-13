@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Container as ContainerWidth } from "@material-ui/core";
 import MyImage from "../../../images/myImage.jpg";
 import BackButton from "../../common/BackButton/BackButton";
+import { device } from "../../../deviceSettings";
 
 const Container = styled(ContainerWidth)`
   height: 100%;
@@ -12,6 +13,11 @@ const Container = styled(ContainerWidth)`
   position: relative;
   align-items: center;
   justify-content: space-between;
+  overflow: auto;
+
+  @media ${device.mobileL} {
+    flex-direction: column;
+  }
 `;
 
 const Root = styled.div`
@@ -19,6 +25,14 @@ const Root = styled.div`
   background-image: url("https://images.pexels.com/photos/411195/pexels-photo-411195.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
   background-repeat: no-repeat;
   background-size: cover;
+
+  @media ${device.tablet} {
+    background-position-x: center;
+  }
+  @media ${device.mobileL} {
+    background-position-y: 100%;
+    background-size: inherit;
+  }
 `;
 
 const Image = styled.img`
@@ -26,6 +40,17 @@ const Image = styled.img`
   height: 400px;
   object-fit: cover;
   border-radius: 50%;
+
+  @media ${device.laptop} {
+    width: 300px;
+    height: 300px;
+  }
+
+  @media ${device.mobileL} {
+    width: 200px;
+    height: 200px;
+    margin-top: 30px;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -34,6 +59,9 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  @media ${device.mobileL} {
+    width: 100%;
+  }
 `;
 
 const Text = styled.p`
@@ -41,6 +69,17 @@ const Text = styled.p`
   margin: 0;
   line-height: 25px;
   padding-bottom: 15px;
+
+  @media ${device.laptop} {
+    font-size: 16px;
+  }
+  @media ${device.tablet} {
+    font-size: 13px;
+  }
+  @media ${device.mobileL} {
+    font-size: 15px;
+    padding-bottom: 3px;
+  }
 `;
 const AboutMe = () => {
   return (

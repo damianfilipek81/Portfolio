@@ -11,6 +11,7 @@ svg{
   width: 75px;
   height: 75px;
   color: #bbb;
+  cursor: pointer;
 
   &:active{
     color: rgb(0,0,0);
@@ -52,19 +53,20 @@ const ArrowDown = styled.div`
   transform: translateX(-50%);
   ${svgSettings}
 `;
-const ArrowControll = ({setController}) => {
+const ArrowControll = ({ setController }) => {
   const left = {
-    key: 'ArrowLeft'
-  }
+    key: "ArrowLeft",
+  };
   const right = {
-    key: 'ArrowRight'
-  }
+    key: "ArrowRight",
+  };
   const down = {
-    key: 'ArrowDown'
-  }
+    key: "ArrowDown",
+  };
   const up = {
-    key: 'ArrowUp'
-  }
+    key: "ArrowUp",
+  };
+
   return (
     <Root>
       <ArrowLeft onClick={() => setController(left)}>
@@ -73,7 +75,8 @@ const ArrowControll = ({setController}) => {
       <ArrowRight onClick={() => setController(right)}>
         <KeyboardArrowRightIcon />
       </ArrowRight>
-      <ArrowUp onClick={() => setController(up)}>
+      <ArrowUp
+        onClick={() => setController(up)}>
         <KeyboardArrowUpIcon />
       </ArrowUp>
       <ArrowDown onClick={() => setController(down)}>
@@ -83,7 +86,7 @@ const ArrowControll = ({setController}) => {
   );
 };
 
-ArrowControll.propTypes={
+ArrowControll.propTypes = {
   setArrowEvent: PropTypes.func,
-}
+};
 export default ArrowControll;

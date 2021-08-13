@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { device } from "../../../deviceSettings";
 
 const Root = styled(Link)`
   position: absolute;
@@ -14,6 +15,10 @@ const Root = styled(Link)`
 
   &:hover {
     color: ${({colorHover})=>colorHover};
+  }
+
+  @media ${device.laptop}{
+    left: 30px;
   }
 `;
 

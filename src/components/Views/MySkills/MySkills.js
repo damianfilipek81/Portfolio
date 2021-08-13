@@ -21,17 +21,25 @@ import jiraImage from "../../../images/jira.png";
 import englishImage from "../../../images/english.png";
 import polishImage from "../../../images/polish.png";
 import enzymeImage from "../../../images/enzyme.png";
+import { device } from "../../../deviceSettings";
 
 const Root = styled.div`
   height: 100%;
   background-image: url("https://images.pexels.com/photos/2653362/pexels-photo-2653362.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
   background-repeat: no-repeat;
   background-size: cover;
+  position: fixed;
+  overflow: auto;
+  width: 100%;
 `;
 const Blur = styled.div`
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(4px);
   height: 100%;
+
+  @media ${device.mobileL} {
+    min-height: 100%
+  }
 `;
 
 const Container = styled(ContainerWidth)`
@@ -43,16 +51,30 @@ const Container = styled(ContainerWidth)`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  @media ${device.mobileL} {
+    padding: 0 5px !important;
+  }
 `;
 
 const Title = styled.h1`
   text-align: center;
+
+  @media ${device.mobileL} {
+    margin-top: 50px;
+  }
 `;
 
 const Wrapper = styled.div`
   display: flex;
   height: 75%;
   width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  @media ${device.mobileL} {
+    flex-wrap: wrap;
+  }
 `;
 
 const Col = styled.div`
@@ -74,12 +96,30 @@ const Col = styled.div`
   &:hover {
     background: rgba(222, 222, 222, 0.3);
   }
+
+  @media ${device.tablet} {
+    h2 {
+      font-size: 19px;
+    }
+  }
+  @media ${device.mobileL} {
+    width: 48%;
+    margin-bottom: 6px;
+    height: 70vh;
+  }
+  @media ${device.mobileS} {
+    width: 90%;
+  }
 `;
 
 const Icon = styled.img`
   height: 35px;
   object-fit: cover;
   padding-right: 10px;
+
+  @media ${device.tablet} {
+    height: 30px;
+  }
 `;
 
 const IconWrapper = styled.div`
@@ -88,6 +128,10 @@ const IconWrapper = styled.div`
   justify-content: center;
   font-size: 16px;
   padding: 3px 8px;
+
+  @media ${device.tablet} {
+    font-size: 14px;
+  }
 `;
 
 const MySkills = () => {

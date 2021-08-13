@@ -4,14 +4,14 @@ import { Container as ContainerWidth } from "@material-ui/core";
 import BackButton from "../../common/BackButton/BackButton";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import emailjs from 'emailjs-com';
-require('dotenv').config()
+import emailjs from "emailjs-com";
+import { device } from "../../../deviceSettings";
+require("dotenv").config();
 
 const Root = styled.div`
   height: 100%;
 `;
 const Container = styled(ContainerWidth)`
-  height: 100%;
   color: #fff;
   display: flex !important;
   height: 100%;
@@ -19,6 +19,7 @@ const Container = styled(ContainerWidth)`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  overflow: auto;
 `;
 
 const Form = styled.form`
@@ -42,6 +43,20 @@ const Form = styled.form`
       outline: none;
     }
   }
+
+  @media ${device.laptop} {
+   margin-top: 70px;
+  }
+  @media ${device.mobileL} {
+    width: 350px;
+    margin-top: 170px;
+  }
+  @media ${device.mobileM} {
+    width: 310px;
+  }
+  @media ${device.mobileS} {
+    width: 270px;
+  }
 `;
 
 const Button = styled.button`
@@ -60,18 +75,9 @@ const Button = styled.button`
   }
 `;
 
-const IconWrapper = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 85%;
-  transform: translate(-50%, -50%);
-`;
+const IconWrapper = styled.div``;
 
 const Email = styled.p`
-  position: absolute;
-  left: 50%;
-  top: 90%;
-  transform: translate(-50%, -50%);
   user-select: text;
 `;
 const Icon = styled.a`
@@ -84,39 +90,66 @@ const Icon = styled.a`
     }
   }
 `;
+const Social = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+`;
 const Contact = () => {
-
-  const sendEmail = (e) =>{
+  const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, e.target, process.env.REACT_APP_USER_ID)
-      .then((result) => {
-        console.log(result.text);
-      }, (error) => {
-        console.log(error.text);
-      });
+    emailjs
+      .sendForm(
+        process.env.REACT_APP_SERVICE_ID,
+        process.env.REACT_APP_TEMPLATE_ID,
+        e.target,
+        process.env.REACT_APP_USER_ID
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
     e.target.reset();
-  }
+  };
 
   return (
     <Root>
       <Container>
         <BackButton name="/home" color="#fff" colorHover="#bbb" />
         <Form onSubmit={sendEmail}>
-          <input placeholder="Your name" type="text" name="name" required></input>
-          <input placeholder="Your e-mail" type="email" name="email" required></input>
+          <input
+            placeholder="Your name"
+            type="text"
+            name="name"
+            required
+          ></input>
+          <input
+            placeholder="Your e-mail"
+            type="email"
+            name="email"
+            required
+          ></input>
           <textarea placeholder="Message" name="message" required></textarea>
           <Button type="submit">Send</Button>
         </Form>
-        <IconWrapper>
-          <Icon href="https://github.com/damianfilipek81">
-            <GitHubIcon />
-          </Icon>
-          <Icon href="https://www.linkedin.com/in/damianfilipek81/">
-            <LinkedInIcon />
-          </Icon>
-        </IconWrapper>
-        <Email>damianfilipek81@gmail.com</Email>
+        <Social>
+          <IconWrapper>
+            <Icon href="https://github.com/damianfilipek81">
+              <GitHubIcon />
+            </Icon>
+            <Icon href="https://www.linkedin.com/in/damianfilipek81/">
+              <LinkedInIcon />
+            </Icon>
+          </IconWrapper>
+          <Email>damianfilipek81@gmail.com</Email>
+        </Social>
       </Container>
     </Root>
   );

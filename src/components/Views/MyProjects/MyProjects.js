@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Container as ContainerWidth } from "@material-ui/core";
 import BackButton from "../../common/BackButton/BackButton";
 import ProjectBox from "../../features/ProjectBox/ProjectBox";
+import { device } from "../../../deviceSettings";
 
 const Root = styled.div`
   min-height: 100%;
@@ -32,6 +33,10 @@ const Container = styled(ContainerWidth)`
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
+
+  @media ${device.mobileL}{
+    flex-direction: column;
+  }
 `;
 
 const Col = styled.div`
@@ -39,6 +44,10 @@ const Col = styled.div`
   width: 100%;
   flex-direction: column;
   margin: 10px;
+
+  @media ${device.mobileL}{
+    margin: 0;
+  }
 `;
 
 const Overlay = styled.div`
