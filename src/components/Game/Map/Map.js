@@ -4,6 +4,8 @@ import MapImage from "../../../images/map.png";
 import { Controlls } from "../Controlls/Controlls";
 import maleCharacter from "../../../images/boy.png";
 import femaleCharacter from "../../../images/girl.png";
+import { device } from "../../../deviceSettings";
+import ArrowControll from "../ArrowControll/ArrowControll";
 
 // const Image = styled.div`
 //   width: 1280px;
@@ -46,9 +48,9 @@ const CharacterPickerWrapper = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 999;
-  position: absolute;
+  position: fixed;
   top: 50%;
-  left: 50%;
+  left: 49%;
   transform: translate(-50%, -50%);
 `;
 const CharacterPicker = styled.div`
@@ -68,6 +70,10 @@ const CharacterPicker = styled.div`
 
   &:hover {
     background: rgba(33, 34, 36, 0.8);
+  }
+
+  @media ${device.mobileS}{
+    width: 135px;
   }
 `;
 
@@ -109,7 +115,8 @@ export const Map = () => {
           Female
         </CharacterPicker>
       </CharacterPickerWrapper>
-      <Controlls event={controller} character={character} />
+      <Controlls event={controller} character={character}/>
+      <ArrowControll setController={setController}/>
     </Wrapper>
   );
 };

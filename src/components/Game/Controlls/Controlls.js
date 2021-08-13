@@ -262,7 +262,7 @@ const myProjectsFields = [
   { top: 352, left: 1152 },
 ];
 
-export const Controlls = ({ event, character }) => {
+export const Controlls = ({ event, character, arrowEvent }) => {
   const [positions, setPositions] = useState({
     top: 448,
     left: 608,
@@ -271,8 +271,9 @@ export const Controlls = ({ event, character }) => {
     step: 0,
   });
   const [nextSite, setNextSite] = useState(null);
+
   const spriteRef = useRef(null);
-  
+
   const handler = (e) => {
     if (e.key === "ArrowRight" || e.key === "d") {
       setPositions({
@@ -362,7 +363,7 @@ export const Controlls = ({ event, character }) => {
     } else {
       setNextSite(null);
     }
-    spriteRef.current.scrollIntoView({"inline":"center", "block": "center"});
+    spriteRef.current.scrollIntoView({ inline: "center", block: "center" });
   };
 
   useEffect(() => {
@@ -378,7 +379,8 @@ export const Controlls = ({ event, character }) => {
         character={character}
         spriteRef={spriteRef}
       />
-      {nextSite !== null && <Modal nextSite={nextSite} event={event}/>}
+      <Modal nextSite={nextSite} event={event} />
+      
     </React.Fragment>
   );
 };
@@ -386,4 +388,5 @@ export const Controlls = ({ event, character }) => {
 Controlls.propTypes = {
   event: PropTypes.any,
   character: PropTypes.string,
+  arrowEvent: PropTypes.string,
 };

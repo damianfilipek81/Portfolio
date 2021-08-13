@@ -11,7 +11,7 @@ const Image = styled.div`
   background-image: url(${({character}) => character === 'male' ? male : character === 'female' && female});
   background-repeat: no-repeat;
   display: inline-block;
-  z-index: 999;
+  z-index: 997;
   position: absolute;
   top: ${({top}) => `${top}`};
   left: ${({left}) => `${left}`};

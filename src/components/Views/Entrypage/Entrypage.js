@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { keyframes } from "styled-components";
+import { device } from "../../../deviceSettings";
 
 const Root = styled.div`
   height: 100%;
@@ -44,6 +45,14 @@ const Text = styled.div`
   color: #39ff14;
   user-select: none;
   font-family: 'matrixFont', sans-serif;
+
+  @media ${device.mobileL} {
+    font-size: 30px;
+  }
+
+  @media ${device.mobileS} {
+    font-size: 25px;
+  }
 `;
 
 const TextButton = styled(Link)`
@@ -66,6 +75,14 @@ const TextButton = styled(Link)`
 
   &:hover{
     color: #EBE759;
+  }
+
+  @media ${device.mobileL} {
+    font-size: 30px;
+  }
+
+  @media ${device.mobileS} {
+    font-size: 25px;
   }
 `;
 const Entrypage = () => {
