@@ -49,7 +49,7 @@ const Image = styled.img`
   @media ${device.mobileL} {
     width: 200px;
     height: 200px;
-    margin-top: 30px;
+    margin-top: 50px;
   }
 `;
 
@@ -61,6 +61,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   @media ${device.mobileL} {
     width: 100%;
+
+    p:first-of-type{
+      margin-top: 20px;
+    }
   }
 `;
 
@@ -78,7 +82,7 @@ const Text = styled.p`
   }
   @media ${device.mobileL} {
     font-size: 15px;
-    padding-bottom: 3px;
+    padding: 5px 0;
   }
 `;
 const AboutMe = () => {
