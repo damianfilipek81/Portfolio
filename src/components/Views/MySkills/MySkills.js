@@ -35,11 +35,7 @@ const Root = styled.div`
 const Blur = styled.div`
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(4px);
-  height: 100%;
-
-  @media ${device.mobileL} {
-    min-height: 100%
-  }
+  min-height: 100%;
 `;
 
 const Container = styled(ContainerWidth)`
@@ -59,7 +55,7 @@ const Container = styled(ContainerWidth)`
 
 const Title = styled.h1`
   text-align: center;
-
+  margin-top: 50px;
   @media ${device.mobileL} {
     margin-top: 50px;
   }
@@ -67,7 +63,7 @@ const Title = styled.h1`
 
 const Wrapper = styled.div`
   display: flex;
-  height: 75%;
+  height: 100%;
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -81,11 +77,11 @@ const Col = styled.div`
   width: 25%;
   text-align: center;
   cursor: pointer;
-  height: 100%;
   overflow: auto;
   border-radius: 15px;
   margin: 0px 3px;
   transition: all 0.1s;
+  height: 75vh;
   ${({ selected }) =>
     selected === false
       ? `filter: blur(2px);

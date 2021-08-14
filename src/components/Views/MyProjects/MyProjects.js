@@ -7,13 +7,16 @@ import { device } from "../../../deviceSettings";
 
 const Root = styled.div`
   min-height: 100%;
-  background-image: url(https://upload.wikimedia.org/wikipedia/commons/6/64/Creaci%C3%B3n_de_Ad%C3%A1n_%28Miguel_%C3%81ngel%29.jpg);
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: top center;
+  // background-image: url(https://upload.wikimedia.org/wikipedia/commons/6/64/Creaci%C3%B3n_de_Ad%C3%A1n_%28Miguel_%C3%81ngel%29.jpg);
+  // background-size: cover;
+  // background-attachment: fixed;
+  // background-position: top center;
   position: relative;
 `;
 
+const Image = styled.img`
+  position: fixed;
+`;
 const Title = styled.h1`
   text-align: center;
   margin-top: 100px;
@@ -34,7 +37,7 @@ const Wrapper = styled.div`
   display: flex;
   width: 100%;
 
-  @media ${device.mobileL}{
+  @media ${device.mobileL} {
     flex-direction: column;
   }
 `;
@@ -45,7 +48,7 @@ const Col = styled.div`
   flex-direction: column;
   margin: 10px;
 
-  @media ${device.mobileL}{
+  @media ${device.mobileL} {
     margin: 0;
   }
 `;
@@ -53,7 +56,16 @@ const Col = styled.div`
 const Overlay = styled.div`
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(45deg, rgba(255,255,255,0) 25.32%, #3D6F8E 37.32%, #3D6F8E 50%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 87.32%, #3D6F8E 87.32%, #3D6F8E 100%);;
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0) 25.32%,
+    #3d6f8e 37.32%,
+    #3d6f8e 50%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 0) 87.32%,
+    #3d6f8e 87.32%,
+    #3d6f8e 100%
+  );
   mix-blend-mode: difference;
   position: absolute;
 `;
@@ -98,8 +110,7 @@ const MyProjects = () => {
     {
       name: "Epoxy Table",
       link: "https://epoxytable.pl/",
-      github:
-        "https://github.com/damianfilipek81/EpoxyTable",
+      github: "https://github.com/damianfilipek81/EpoxyTable",
       description:
         "My first commercial SPA project made for EpoxyTable company. Stack: SCSS, React, React Redux",
     },
@@ -142,6 +153,8 @@ const MyProjects = () => {
   ];
   return (
     <Root>
+      <Image src={'https://upload.wikimedia.org/wikipedia/commons/6/64/Creaci%C3%B3n_de_Ad%C3%A1n_%28Miguel_%C3%81ngel%29.jpg'}/>
+
       <Overlay />
       <Container>
         <BackButton name="/home" color="#fff" colorHover="#bbb" />
@@ -155,7 +168,7 @@ const MyProjects = () => {
           <Col>
             {rightRow.map((data, index) => (
               <ProjectBox key={index} {...data} />
-            ))}
+              ))}
           </Col>
         </Wrapper>
       </Container>
