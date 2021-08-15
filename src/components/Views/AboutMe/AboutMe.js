@@ -36,21 +36,10 @@ const Root = styled.div`
 `;
 
 const Image = styled.img`
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 50%;
-
-  @media ${device.laptop} {
-    width: 300px;
-    height: 300px;
-  }
-
-  @media ${device.mobileL} {
-    width: 200px;
-    height: 200px;
-    margin-top: 50px;
-  }
 `;
 
 const Wrapper = styled.div`
@@ -62,9 +51,25 @@ const Wrapper = styled.div`
   @media ${device.mobileL} {
     width: 100%;
 
-    p:first-of-type{
+    p:first-of-type {
       margin-top: 20px;
     }
+  }
+`;
+
+const ImageWrapper = styled.div`
+  width: 400px;
+  height: 400px;
+
+  @media ${device.laptop} {
+    width: 300px;
+    height: 300px;
+  }
+
+  @media ${device.mobileL} {
+    width: 200px;
+    height: 200px;
+    margin-top: 50px;
   }
 `;
 
@@ -91,7 +96,9 @@ const AboutMe = () => {
       <Container maxWidth="lg">
         <BackButton name={"/home"} color="#393939" colorHover="#030303" />
         <Wrapper>
-          <Image src={MyImage} />
+          <ImageWrapper>
+            <Image src={MyImage} />
+          </ImageWrapper>
         </Wrapper>
         <Wrapper>
           <Text>Hi there!</Text>
