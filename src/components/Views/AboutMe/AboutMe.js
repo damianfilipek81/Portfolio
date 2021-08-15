@@ -108,7 +108,7 @@ const AboutMe = () => {
             Management and Banking in Cracow.
           </Text>
           <Text>
-            In November 2020 I started my jurney with programming. Since then
+            In November 2020 I started my journey with programming. Since then
             I’m spending 40 to 50 hours per week mastering my skills. In my
             portfolio I already have many projects, with which I am very
             satisfied and willing to share.
