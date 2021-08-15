@@ -52,7 +52,7 @@ const Wrapper = styled.div`
     width: 100%;
 
     p:first-of-type {
-      margin-top: 20px;
+      margin-top: 50px;
     }
   }
 `;
