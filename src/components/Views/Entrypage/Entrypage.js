@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { keyframes } from "styled-components";
 import { device } from "../../../deviceSettings";
+import SkipButton from "../../common/SkipButton/SkipButton";
+import { Container } from "@material-ui/core";
 
 const Root = styled.div`
   height: 100%;
@@ -10,12 +12,17 @@ const Root = styled.div`
   left: 0;
   top: 0;
   position: fixed;
-  display: flex;
+`;
+
+const ContainerWidth = styled(Container)`
+  position: relative;
+  height: 100%;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-`;
 
+`
 const typing = keyframes`
 from {
   width: 0
@@ -40,11 +47,12 @@ const Text = styled.div`
   animation: ${typing} 2s steps(22), ${blink} 0.5s step-end infinite alternate;
   white-space: nowrap;
   overflow: hidden;
-  ${({blinkTimeout}) => blinkTimeout ? `border-right: none;` : `border-right: 3px solid;`}
+  ${({ blinkTimeout }) =>
+    blinkTimeout ? `border-right: none;` : `border-right: 3px solid;`}
   font-size: 50px;
   color: #39ff14;
   user-select: none;
-  font-family: 'matrixFont', sans-serif;
+  font-family: "matrixFont", sans-serif;
 
   @media ${device.mobileL} {
     font-size: 30px;
@@ -67,14 +75,15 @@ const TextButton = styled(Link)`
   animation: ${typing} 1s steps(12), ${blink} 0.5s step-end infinite alternate;
   white-space: nowrap;
   overflow: hidden;
-  ${({blinkTimeout}) => blinkTimeout ? `border-right: none;` : `border-right: 3px solid;`}
+  ${({ blinkTimeout }) =>
+    blinkTimeout ? `border-right: none;` : `border-right: 3px solid;`}
   font-size: 50px;
   color: #39ff14;
   margin-top: 30px;
-  font-family: 'matrixFont', sans-serif;
+  font-family: "matrixFont", sans-serif;
 
-  &:hover{
-    color: #EBE759;
+  &:hover {
+    color: #ebe759;
   }
 
   @media ${device.mobileL} {
@@ -95,9 +104,19 @@ const Entrypage = () => {
 
   return (
     <Root>
-      <Text width={16} display={oneSecTimeout} blinkTimeout={sixSecTimeout}>{`> `}Damian Filipek</Text>
-      <Text width={22} display={sixSecTimeout} blinkTimeout={twelveSecTimeout}>{`> `}junior web developer</Text>
-      <TextButton display={twelveSecTimeout} blinkTimeout={false} to='/home'>{`> `}Enter</TextButton>
+      <ContainerWidth>
+
+      <Text width={16} display={oneSecTimeout} blinkTimeout={sixSecTimeout}>
+        {`> `}Damian Filipek
+      </Text>
+      <Text width={22} display={sixSecTimeout} blinkTimeout={twelveSecTimeout}>
+        {`> `}junior web developer
+      </Text>
+      <TextButton display={twelveSecTimeout} blinkTimeout={false} to="/home">
+        {`> `}Enter
+      </TextButton>
+      <SkipButton />
+      </ContainerWidth>
     </Root>
   );
 };

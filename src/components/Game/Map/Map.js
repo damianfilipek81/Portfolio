@@ -6,6 +6,7 @@ import maleCharacter from "../../../images/boy.png";
 import femaleCharacter from "../../../images/girl.png";
 import { device } from "../../../deviceSettings";
 import ArrowControll from "../ArrowControll/ArrowControll";
+import HomepageClassicView from '../../Views/HomepageClassicView/HomepageClassicView';
 
 // const Image = styled.div`
 //   width: 1280px;
@@ -42,6 +43,7 @@ const Image = styled.img`
   top: 0;
   left: 0;
   object-fit: cover;
+  ${({classicView})=> classicView && `filter: blur(5px);`}
 `;
 const CharacterPickerWrapper = styled.div`
   display: flex;
@@ -52,6 +54,8 @@ const CharacterPickerWrapper = styled.div`
   top: 50%;
   left: 49%;
   transform: translate(-50%, -50%);
+  ${({classicView})=> classicView && `filter: blur(5px);`}
+
 `;
 const CharacterPicker = styled.div`
   display: flex;
@@ -87,9 +91,35 @@ const SpriteImage = styled.div`
   z-index: 999;
   margin-bottom: 5px;
 `;
+
+const ClassicViewButton = styled.span`
+  display: inline-block;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1001;
+  font-weight: bold;
+  background: rgba(0,0,0,0.4);
+  padding: 10px;
+  border-radius: 5px;
+
+  &:hover{
+    color: black;
+    background: rgba(255,255,255,0.4);
+  }
+
+  @media ${device.laptop}{
+    position: fixed;
+    top: 10px;
+  }
+`
 export const Map = () => {
   const [controller, setController] = useState("");
   const [character, setCharacter] = useState(null);
+  const [classicView, setClassicView] = useState(false);
 
   const myRef = useRef(null);
 
@@ -98,8 +128,8 @@ export const Map = () => {
   }, []);
   return (
     <Wrapper onKeyDown={(e) => setController(e)} tabIndex="0" ref={myRef}>
-      <Image src={MapImage} />
-      <CharacterPickerWrapper>
+      <Image src={MapImage} classicView={classicView}/>
+      <CharacterPickerWrapper classicView={classicView}>
         <CharacterPicker
           onClick={() => setCharacter("male")}
           character={character}
@@ -117,6 +147,10 @@ export const Map = () => {
       </CharacterPickerWrapper>
       <Controlls event={controller} character={character}/>
       <ArrowControll setController={setController}/>
+      {classicView === false ? <ClassicViewButton onClick={() => setClassicView(true)}>Classic view</ClassicViewButton> :
+        <ClassicViewButton onClick={() => setClassicView(false)}>Map view</ClassicViewButton>
+      }
+      {classicView && <HomepageClassicView />}
     </Wrapper>
   );
 };
